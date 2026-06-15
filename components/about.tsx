@@ -15,7 +15,7 @@ export function About() {
               {about.title[lang]}
             </p>
             <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {lang === "ja" ? "東京の小さな、二人組のチーム。" : "A small, two-person team in Tokyo."}
+              {lang === "ja" ? "東京を拠点とするバイリンガルチーム。" : "A bilingual team based in Tokyo."}
             </h2>
           </div>
           <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
