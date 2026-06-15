@@ -56,20 +56,15 @@ export function Contact() {
             {contact.sub[lang]}
           </p>
 
-          <div className="mt-8 space-y-3">
-            {RECIPIENTS.map((r) => (
-              <a
-                key={r}
-                href={`mailto:${r}`}
-                className="flex items-center gap-3 text-sm font-medium text-foreground transition-colors hover:text-primary"
-              >
-                <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Mail className="size-4" />
-                </span>
-                {r}
-              </a>
-            ))}
-          </div>
+          <a
+            href={`mailto:${RECIPIENTS.join(",")}`}
+            className="mt-8 inline-flex items-center gap-3 text-sm font-medium text-foreground transition-colors hover:text-primary"
+          >
+            <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Mail className="size-4" />
+            </span>
+            {lang === "ja" ? "メールでお問い合わせ" : "Email us directly"}
+          </a>
         </div>
 
         <form
