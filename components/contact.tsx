@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, type FormEvent } from "react"
-import { Mail } from "lucide-react"
 import { content, useLang } from "@/lib/i18n"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -55,16 +54,6 @@ export function Contact() {
           <p className="mt-5 max-w-md text-pretty leading-relaxed text-muted-foreground">
             {contact.sub[lang]}
           </p>
-
-          <a
-            href={`mailto:${RECIPIENTS.join(",")}`}
-            className="mt-8 inline-flex items-center gap-3 text-sm font-medium text-foreground transition-colors hover:text-primary"
-          >
-            <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <Mail className="size-4" />
-            </span>
-            {lang === "ja" ? "メールでお問い合わせ" : "Email us directly"}
-          </a>
         </div>
 
         <form
