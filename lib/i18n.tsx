@@ -13,11 +13,11 @@ type Dict = typeof content
 
 export const content = {
   brand: "ケアデジタル",
-  brandRoman: "Care Digital",
+  brandRoman: "CareDigital",
   nav: {
     services: { en: "Services", ja: "サービス" },
     about: { en: "About", ja: "私たちについて" },
-    why: { en: "Why Bilingual", ja: "なぜバイリンガル" },
+    why: { en: "Why Bilingual", ja: "バイリンガルの重要性" },
     contact: { en: "Contact", ja: "お問い合わせ" },
   },
   hero: {
@@ -37,7 +37,7 @@ export const content = {
     ctaAlt: { en: "お問い合わせ", ja: "Get in touch" },
   },
   services: {
-    title: { en: "What We Do", ja: "私たちができること" },
+    title: { en: "Service Overview", ja: "サービス概要" },
     intro: {
       en: "We help Tokyo clinics show up online — with websites that work for both Japanese and international patients.",
       ja: "東京のクリニックが、日本人患者様にも外国人患者様にも見つけてもらいやすいオンライン環境づくりをサポートします。",
@@ -103,11 +103,12 @@ export const content = {
     ],
   },
   why: {
-    title: { en: "Why Bilingual", ja: "なぜバイリンガル対応が必要なのか" },
+    title: { en: "Our Vision", ja: "私たちの想い" },
     body: {
-      en: "Tokyo has one of the largest international communities in Japan — and most clinic websites are Japanese-only. That means foreign residents can't find you, can't understand your services, and go elsewhere. We fix that. A bilingual site isn't a luxury — it's patients you're currently turning away.",
-      ja: "東京には日本最大級の国際コミュニティがあります。しかし、多くのクリニックのWebサイトは日本語のみです。その結果、外国人居住者や訪日外国人は、クリニックを見つけられず、別の医療機関を選んでしまいます。私たちは、その機会損失を解決します。バイリンガルサイトは、これまで取りこぼしていた患者さんとの接点を生み出します。",
+      en: "Tokyo has one of the largest international communities in Japan — and most clinic websites are Japanese-only. As a result, foreign residents and international visitors cannot find you, cannot understand your services, and end up choosing other medical institutions. We solve that opportunity loss.",
+      ja: "東京には日本最大級の国際コミュニティがあります。しかし、多くのクリニックのWebサイトは日本語のみです。その結果、外国人居住者や訪日外国人は、クリニックを見つけられない、提供サービスを理解できない、予約方法がわからないといった理由で、別の医療機関を選んでしまいます。私たちは、その機会損失を解決します。",
     },
+    subtitle: { en: "More people can access your information.", ja: "より多くの方に情報を届けるために" },
     points: [
       { en: "Can't find your clinic", ja: "クリニックを見つけられない" },
       { en: "Can't understand your services", ja: "提供サービスを理解できない" },

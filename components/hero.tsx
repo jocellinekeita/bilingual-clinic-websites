@@ -10,11 +10,19 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:pb-28 lg:pt-24">
         <div className="flex flex-col items-start">
-          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-medium tracking-wide text-secondary-foreground">
+          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-4 py-1.5 text-sm font-medium tracking-wide text-secondary-foreground">
             {content.hero.tagline[lang]}
           </span>
-          <h1 className="mt-6 text-balance font-serif text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {content.hero.headline[lang]}
+          <h1 className="mt-6 text-balance font-serif text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            {lang === "ja" ? (
+              <>
+                あなたのクリニックを
+                <br />
+                英語でも日本語でも。
+              </>
+            ) : (
+              content.hero.headline[lang]
+            )}
           </h1>
           <p className="mt-6 max-w-lg text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             {content.hero.sub[lang]}
@@ -22,7 +30,10 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+              style={{
+                background: 'linear-gradient(135deg, #03D9FE, #003CAA)'
+              }}
             >
               {content.hero.cta[lang]}
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

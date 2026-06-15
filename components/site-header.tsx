@@ -14,19 +14,17 @@ export function SiteHeader() {
     { href: "#services", label: content.nav.services[lang] },
     { href: "#about", label: content.nav.about[lang] },
     { href: "#why", label: content.nav.why[lang] },
-    { href: "#contact", label: content.nav.contact[lang] },
   ]
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <a href="#top" className="flex items-baseline gap-2">
-          <span className="font-serif text-xl font-bold tracking-tight text-foreground">
-            {content.brand}
-          </span>
-          <span className="hidden text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:inline">
-            {content.brandRoman}
-          </span>
+          <img
+            src="images/logo_caredigital_large.png"
+            alt={content.brand}
+            className="h-14 w-auto"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">

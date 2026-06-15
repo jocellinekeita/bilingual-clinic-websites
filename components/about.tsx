@@ -1,6 +1,5 @@
 "use client"
 
-import { MapPin } from "lucide-react"
 import { content, useLang } from "@/lib/i18n"
 
 export function About() {
@@ -18,10 +17,6 @@ export function About() {
               {lang === "ja" ? "東京を拠点とするバイリンガルチーム。" : "A bilingual team based in Tokyo."}
             </h2>
           </div>
-          <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin className="size-4 text-primary" />
-            {about.location[lang]}
-          </span>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">

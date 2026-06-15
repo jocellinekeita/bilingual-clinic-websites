@@ -5,6 +5,7 @@ import { content, useLang } from "@/lib/i18n"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
 
 const RECIPIENTS = ["jocelline.keita@gmail.com", "runa.wahahahaha@gmail.com"]
 
@@ -45,10 +46,7 @@ export function Contact() {
     <section id="contact" className="border-t border-border bg-secondary/40">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-28">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-            {content.nav.contact[lang]}
-          </p>
-          <h2 className="mt-3 text-balance font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-balance font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             {contact.title[lang]}
           </h2>
           <p className="mt-5 max-w-md text-pretty leading-relaxed text-muted-foreground">
@@ -77,12 +75,17 @@ export function Contact() {
               <Label htmlFor="message">{contact.message[lang]}</Label>
               <Textarea id="message" name="message" rows={4} required />
             </div>
-            <button
+            <Button
               type="submit"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              variant="gradient"
+              className="mt-1"
+              disabled={sent}
+              style={{
+                background: 'linear-gradient(135deg, #03D9FE, #003CAA)'
+              }}
             >
               {sent ? contact.sending[lang] : contact.submit[lang]}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
