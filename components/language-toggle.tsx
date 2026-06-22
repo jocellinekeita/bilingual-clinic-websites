@@ -27,7 +27,7 @@ export function LanguageToggle() {
             aria-pressed={isSelected}
             onClick={() => setLang(option.value)}
             className={cn(
-              "inline-flex items-center justify-center px-6 h-12 text-xl font-medium rounded-full transition-all duration-200 focus-visible:outline-none",
+              "inline-flex items-center justify-center px-6 h-12 text-sm font-medium rounded-full transition-all duration-200 focus-visible:outline-none",
               isSelected 
                 ? "bg-white text-neutral-900 shadow-sm" 
                 : "bg-transparent text-white/80 hover:text-white"

@@ -17,7 +17,8 @@ export function SiteHeader() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#049DC4] text-white border-b border-white/10">
+    // 💡 bg-[#03C2F2]/80 で指定の透過度80%を設定、backdrop-blur-md で背面を美しくぼかします
+    <header className="sticky top-0 z-50 w-full bg-[#03C2F2]/80 backdrop-blur-md text-white border-b border-white/10">
       <div className="mx-auto flex max-w-[1440px] h-[96px] items-center justify-between px-12">
 
         {/* 左側：ロゴエリア（mix-blend-multiplyで白背景を透過） */}
@@ -30,13 +31,13 @@ export function SiteHeader() {
           />
         </a>
 
-        {/* 中央：ナビゲーション（20px） */}
+        {/* 中央：ナビゲーション（💡 text-base = 16px に変更） */}
         <nav className="hidden items-center gap-12 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-xl font-medium text-white transition-colors hover:text-white/80 antialiased tracking-normal"
+              className="text-base font-medium text-white transition-colors hover:text-white/80 antialiased tracking-normal"
               style={{ fontFamily: "'Noto Sans JP', 'Helvetica Neue', Helvetica, Arial, sans-serif" }}
             >
               {l.label}
@@ -46,12 +47,14 @@ export function SiteHeader() {
 
         {/* 右側：言語切り替え ＆ お問い合わせボタン */}
         <div className="hidden items-center gap-6 md:flex">
-          <div className="flex items-center h-12 text-xl font-medium antialiased">
+          {/* 💡 text-base = 16px に変更 */}
+          <div className="flex items-center h-12 text-base font-medium antialiased">
             <LanguageToggle />
           </div>
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-[#e6e6e6] px-8 h-12 text-xl font-medium text-neutral-900 transition-colors hover:bg-neutral-200"
+            // 💡 text-base = 16px に変更
+            className="inline-flex items-center justify-center rounded-full bg-[#ffffff] px-8 h-12 text-base font-medium text-neutral-900 transition-colors hover:bg-neutral-200 shadow-sm"
             style={{ fontFamily: "'Noto Sans JP', 'Helvetica Neue', Helvetica, Arial, sans-serif" }}
           >
             <span>{content.nav.contact[lang]}</span>
@@ -72,28 +75,29 @@ export function SiteHeader() {
       {/* モバイル用ドロワーメニュー */}
       <div
         className={cn(
-          "overflow-hidden transition-[max-height] duration-300 md:hidden bg-[#049DC4]",
+          "overflow-hidden transition-[max-height] duration-300 md:hidden bg-[#03C2F2]",
           open ? "max-h-[360px] border-t border-white/10" : "max-h-0",
         )}
       >
+        {/* 💡 モバイルメニュー内のフォントサイズもすべて一貫して text-base（16px）に統一 */}
         <nav className="flex flex-col gap-1 px-6 py-4">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="rounded-md px-3 py-3 text-xl font-medium text-white hover:bg-white/10"
+              className="rounded-md px-3 py-3 text-base font-medium text-white hover:bg-white/10"
             >
               {l.label}
             </a>
           ))}
-          <div className="flex items-center h-12 px-3 text-xl my-2">
+          <div className="flex items-center h-12 px-3 text-base my-2">
             <LanguageToggle />
           </div>
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="mt-2 flex items-center justify-center rounded-full bg-[#e6e6e6] py-3 text-xl font-medium text-neutral-900 sm:hidden"
+            className="mt-2 flex items-center justify-center rounded-full bg-[#ffffff] py-3 text-base font-medium text-neutral-900"
           >
             {content.nav.contact[lang]}
           </a>
