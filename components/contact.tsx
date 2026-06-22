@@ -1,52 +1,39 @@
 "use client"
 
-import { useState } from "react"
-import { useLang } from "@/lib/i18n"
+import { content, useLang } from "@/lib/i18n"
 
 export default function Contact() {
   const { lang } = useLang()
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
+  
   return (
-    <section id="contact" className="w-full bg-white py-24 border-t border-neutral-100">
-      <div className="mx-auto max-w-[1440px] px-12 max-w-3xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-neutral-900 [font-family:'Noto_Serif_JP-Bold',Helvetica]">
-            {lang === "ja" ? "お問い合わせ" : "Contact Us"}
-          </h2>
-          <p className="text-neutral-500 mt-2 text-lg">
-            {lang === "ja" ? "ご相談・お見積もりは無料です。お気軽にご連絡ください。" : "Free consultation and estimate. Feel free to reach out."}
-          </p>
+    <section 
+      id="contact" 
+      className="w-full bg-[#E6F5FD] py-24 scroll-mt-[96px] text-center flex flex-col items-center justify-center"
+    >
+      <div className="mx-auto max-w-[1440px] px-12 flex flex-col items-center">
+        
+        {/* 大見出し：美しい明朝体 */}
+        <h2 className="text-[36px] sm:text-[40px] font-bold text-neutral-900 tracking-tight font-[family-name:var(--font-noto-serif)] antialiased leading-tight">
+          {lang === "ja" ? "お気軽にご相談ください" : "Feel free to reach out"}
+        </h2>
+        
+        {/* サブテキスト：サンセリフ */}
+        <p className="text-[16px] sm:text-[18px] font-normal text-neutral-700 font-[family-name:var(--font-noto-sans)] antialiased mt-6 max-w-2xl leading-relaxed">
+          {lang === "ja" 
+            ? "30分の無料相談を実施しています。アイデア段階でもお気軽にご相談ください。" 
+            : "We offer a free 30-minute consultation. Feel free to contact us even at the idea stage."}
+        </p>
+
+        {/* 💡 理想のUI：中央に配置された鮮やかなグラデーションの楕円ボタン */}
+        <div className="mt-10">
+          <a
+            href="mailto:info@caredigital.com" // または適切な遷移先
+            className="inline-flex items-center justify-center w-[256px] h-14 rounded-full bg-gradient-to-r from-[#49B3E4] via-[#2F73C0] to-[#1E4FA2] text-white text-lg font-bold tracking-wide transition-transform hover:scale-[1.02] shadow-md shadow-[#2f73c0]/10 font-[family-name:var(--font-noto-sans)]"
+          >
+            {lang === "ja" ? "無料相談" : "Free Consultation"}
+          </a>
         </div>
 
-        {submitted ? (
-          <div className="bg-blue-50 border border-blue-200 text-[#049DC4] p-6 rounded-xl text-center text-xl font-medium">
-            {lang === "ja" ? "送信が完了しました。ありがとうございます！" : "Thank you! Your message has been sent."}
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-              <label className="text-base font-medium text-neutral-800">{lang === "ja" ? "お名前" : "Name"}</label>
-              <input required type="text" className="w-full px-4 h-12 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#049DC4] text-neutral-900 bg-neutral-50" />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-base font-medium text-neutral-800">{lang === "ja" ? "メールアドレス" : "Email"}</label>
-              <input required type="email" className="w-full px-4 h-12 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#049DC4] text-neutral-900 bg-neutral-50" />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-base font-medium text-neutral-800">{lang === "ja" ? "お問い合わせ内容" : "Message"}</label>
-              <textarea required rows={5} className="w-full p-4 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#049DC4] text-neutral-900 bg-neutral-50 resize-none" />
-            </div>
-            <button type="submit" className="w-full h-14 rounded-full bg-[#049DC4] text-white text-xl font-bold transition-opacity hover:opacity-90 mt-4">
-              {lang === "ja" ? "送信する" : "Send Message"}
-            </button>
-          </form>
-        )}
       </div>
     </section>
   )

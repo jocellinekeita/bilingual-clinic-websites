@@ -1,23 +1,45 @@
 "use client"
 
-import { content, useLang } from "@/lib/i18n"
+import { useLang } from "@/lib/i18n"
 
 export function SiteFooter() {
   const { lang } = useLang()
+
   return (
-    <footer className="border-t border-[#d6e8f0] bg-white">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 sm:flex-row sm:px-8">
-        <img
-          src="images/logo_caredigital_large.png"
-          alt={content.brand}
-          className="h-8 w-auto"
-        />
-        <p className="text-center text-sm text-gray-400 sm:text-left">
-          {content.footer.rights[lang]}
-        </p>
-        <p className="text-xs text-gray-400">
-          © {new Date().getFullYear()} {content.brandRoman}
-        </p>
+    <footer className="w-full bg-[#090909] py-8 text-neutral-400 text-sm font-[family-name:var(--font-noto-sans)] antialiased border-t border-neutral-900">
+      <div className="mx-auto max-w-[1440px] px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* 左側：指定のロゴマーク (logo_caredigital_large.png) */}
+        <div className="flex items-center gap-2">
+          {/* 黒背景に馴染むよう、白背景のすっきりしたミニボックスにロゴを配置 */}
+          <div className="bg-white px-4 py-1.5 rounded-sm flex items-center justify-center h-8">
+            <img 
+              src="/images/logo_caredigital_large.png" 
+              alt="CAREDIGITAL" 
+              className="h-5 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        </div>
+
+        {/* 中央：コピーライト */}
+        <div className="text-xs text-neutral-500">
+          © 2026 CareDigital
+        </div>
+
+        {/* 右側：規約・プライバシーリンク */}
+        <div className="flex items-center gap-4 text-xs text-neutral-500">
+          <a href="#terms" className="hover:text-white transition-colors">
+            {lang === "ja" ? "利用規約" : "Terms of Service"}
+          </a>
+          <span>|</span>
+          <a href="#privacy" className="hover:text-white transition-colors">
+            {lang === "ja" ? "プライバシーポリシー" : "Privacy Policy"}
+          </a>
+        </div>
+
       </div>
     </footer>
   )
