@@ -17,13 +17,13 @@ export const content = {
   nav: {
     services: { en: "Services", ja: "サービス" },
     about: { en: "About", ja: "私たちについて" },
-    why: { en: "Why Bilingual", ja: "バイリンガルの重要性" },
+    why: { en: "Why Bilingual", ja: "私たちの想い" },
     contact: { en: "Contact", ja: "お問い合わせ" },
   },
   hero: {
     tagline: {
       en: "Bilingual Web Design for Medical Clinics in Tokyo",
-      ja: "東京のクリニックのためのバイリンガルWeb制作（英語・日本語対応）",
+      ja: "東京のクリニックのためのバイリンガルWeb制作",
     },
     headline: {
       en: "Your clinic, online — in English and Japanese.",
@@ -108,7 +108,7 @@ export const content = {
       en: "Tokyo has one of the largest international communities in Japan — and most clinic websites are Japanese-only. As a result, foreign residents and international visitors cannot find you, cannot understand your services, and end up choosing other medical institutions. We solve that opportunity loss.",
       ja: "東京には日本最大級の国際コミュニティがあります。しかし、多くのクリニックのWebサイトは日本語のみです。その結果、外国人居住者や訪日外国人は、クリニックを見つけられない、提供サービスを理解できない、予約方法がわからないといった理由で、別の医療機関を選んでしまいます。私たちは、その機会損失を解決します。",
     },
-    subtitle: { en: "More people can access your information.", ja: "より多くの方に情報を届けるために" },
+    subtitle: { en: "More people can access your information.", ja: "より多くの方に情報を届けるために。" },
     points: [
       { en: "Can't find your clinic", ja: "クリニックを見つけられない" },
       { en: "Can't understand your services", ja: "提供サービスを理解できない" },

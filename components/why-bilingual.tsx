@@ -9,7 +9,7 @@ export function WhyBilingual() {
 
   return (
     <section id="why-bilingual" className="w-full bg-[#EBF6FB] py-24 scroll-mt-[96px]">
-      <div className="mx-auto max-w-[1440px] px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div className="mx-auto max-w-[1250px] px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         
         {/* 左側：白枠と影（shadow）を除去 */}
         <div className="flex justify-center w-full">

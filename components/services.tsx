@@ -16,11 +16,12 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="w-full bg-white py-24 scroll-mt-[96px]">
-      <div className="mx-auto max-w-[1440px] px-12">
+    <section id="services" className="w-full bg-white pt-12 pb-24 scroll-mt-[96px]">
+      {/* 💡 コンテンツ幅を max-w-[1250px] に統一 */}
+      <div className="mx-auto max-w-[1250px] px-12">
         
-        {/* セクションヘッダー */}
-        <div className="flex flex-col items-start gap-3 mb-16 max-w-4xl">
+        {/* セクションヘッダー（左端のラインを1250pxに吸着） */}
+        <div className="flex flex-col items-start gap-3 mb-16">
           <p className="text-[18px] font-bold bg-gradient-to-r from-[#03BAEE] to-[#014FB4] bg-clip-text text-transparent [font-family:'Noto_Sans_JP-Bold',Helvetica]">
             {services.title[lang]}
           </p>
@@ -29,22 +30,22 @@ export default function Services() {
           </h2>
         </div>
 
-        {/* サービスカードグリッド：💡 hover時の一連のアニメーション・影の強化を除去 */}
+        {/* サービスカードグリッド */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.items.map((item, idx) => (
             <div 
               key={idx} 
               className="bg-[#028AC4] p-8 rounded-[18px] flex flex-col gap-5 text-white shadow-md cursor-default select-none"
             >
-              {/* アイコンボックス */}
               <div className="p-3 bg-white rounded-xl w-fit shadow-sm">
                 {icons[idx] || <Globe className="size-8 text-[#028AC4]" />}
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-bold [font-family:'Noto_Sans_JP-Bold',Helvetica] tracking-normal">
+                {/* SNS運用が1行に綺麗に収まる指定 */}
+                <h3 className="text-xl md:text-[19px] font-bold font-[family-name:var(--font-noto-serif)] antialiased tracking-tight md:whitespace-nowrap">
                   {item.title[lang]}
                 </h3>
-                <p className="text-white/90 text-base leading-relaxed [font-family:'Noto_Sans_JP-Regular',Helvetica]">
+                <p className="text-white/90 text-base leading-relaxed [font-family:'Noto_Sans_JP-Regular',Helvetica] mt-1">
                   {item.body[lang]}
                 </p>
               </div>

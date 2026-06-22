@@ -165,3 +165,6 @@
     border-image: linear-gradient(135deg, var(--accent-gradient-light), var(--accent-gradient-dark)) 1;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
