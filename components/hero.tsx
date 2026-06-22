@@ -53,7 +53,7 @@ export default function Hero() {
         <div className="flex flex-col items-start max-w-2xl">
           {/* 見出しサイズバランス（30px / 42px）＆ 文字高180% */}
           <h1
-            className="text-[30px] md:text-[42px] font-semibold text-neutral-900 tracking-tight leading-[1.8] font-[family-name:var(--font-noto-serif)] antialiased animate-fade-up delay-1"
+            className="text-[30px] md:text-[42px] font-semibold text-neutral-900 tracking-tight leading-[1.6] font-[family-name:var(--font-noto-serif)] antialiased animate-fade-up delay-1"
           >
             {headlineLines.map((line, idx) => (
               <span key={idx} className="block">
