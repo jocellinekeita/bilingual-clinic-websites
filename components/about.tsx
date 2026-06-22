@@ -2,43 +2,49 @@
 
 import { content, useLang } from "@/lib/i18n"
 
-export function About() {
+export default function About() {
   const { lang } = useLang()
-  const { about } = content
+
+  const members = [
+    {
+      name: "Jolie",
+      role: lang === "ja" ? "DXプロジェクトマネージャー" : "DX Project Manager",
+      desc: lang === "ja" 
+        ? "デジタルトランスフォーメーション(DX)の深い知見を持ち、英語・日本語のバイリンガルで数多くのプロジェクトを推進。医療機関向けの英語対応・システム統合を得意としています。"
+        : "With deep expertise in Digital Transformation (DX), she drives numerous projects bilingually in English and Japanese, specializing in clinic localization.",
+      img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Runa",
+      role: lang === "ja" ? "UI/UXデザイナー" : "UI/UX Designer",
+      desc: lang === "ja" 
+        ? "Webサイトやアプリケーションのデザインを、ユーザーリサーチから実装設計まで一貫して手がけ、使いやすさと美しさを両立するデザインを得意としています。"
+        : "Handles website and application design from user research to UI implementation, excels in creating interfaces that balance aesthetics and usability.",
+      img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80"
+    }
+  ]
+
   return (
-    <section id="about" className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-              {about.title[lang]}
-            </p>
-            <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {lang === "ja" ? "東京を拠点とするバイリンガルチーム。" : "A bilingual team based in Tokyo."}
-            </h2>
-          </div>
+    <section id="about" className="w-full bg-neutral-50 py-24">
+      <div className="mx-auto max-w-[1440px] px-12">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-neutral-900 [font-family:'Noto_Serif_JP-Bold',Helvetica]">
+            {lang === "ja" ? "私たちについて" : "About Us"}
+          </h2>
+          <p className="text-neutral-500 mt-2 text-lg">
+            {lang === "ja" ? "東京を拠点とするバイリンガルチーム" : "Tokyo-based bilingual team"}
+          </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {about.people.map((p) => (
-            <div
-              key={p.name}
-              className="flex flex-col rounded-2xl border border-border bg-card p-7"
-            >
-              <div className="flex items-center gap-4">
-                <span className="inline-flex size-14 items-center justify-center rounded-full bg-primary/10 font-serif text-xl font-bold text-primary">
-                  {p.name.charAt(0)}
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl font-semibold text-foreground">
-                    {p.name}
-                  </h3>
-                  <p className="text-sm font-medium text-primary">{p.role[lang]}</p>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {members.map((m, idx) => (
+            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-neutral-100 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+              <img src={m.img} alt={m.name} className="size-24 rounded-full object-cover bg-neutral-100" />
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-2xl font-bold text-neutral-900">{m.name}</h3>
+                <p className="text-[#049DC4] font-medium text-sm mb-3">{m.role}</p>
+                <p className="text-neutral-600 text-base leading-relaxed">{m.desc}</p>
               </div>
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                {p.bio[lang]}
-              </p>
             </div>
           ))}
         </div>

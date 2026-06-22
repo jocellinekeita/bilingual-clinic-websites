@@ -1,74 +1,83 @@
 "use client"
 
-import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { content, useLang } from "@/lib/i18n"
+import { ArrowRight } from "lucide-react"
 
-export function Hero() {
+export default function Hero() {
   const { lang } = useLang()
-  return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:pb-28 lg:pt-24">
-        <div className="flex flex-col items-start">
-          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-4 py-1.5 text-sm font-medium tracking-wide text-secondary-foreground">
-            {content.hero.tagline[lang]}
-          </span>
-          <h1 className="mt-6 text-balance font-serif text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-            {lang === "ja" ? (
-              <>
-                あなたのクリニックを
-                <br />
-                英語でも日本語でも。
-              </>
-            ) : (
-              content.hero.headline[lang]
-            )}
-          </h1>
-          <p className="mt-6 max-w-lg text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {content.hero.sub[lang]}
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
-              style={{
-                background: 'linear-gradient(135deg, #03D9FE, #003CAA)'
-              }}
-            >
-              {content.hero.cta[lang]}
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {content.nav.services[lang]}
-            </a>
-          </div>
-        </div>
 
-        <div className="relative">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-sm">
-            <Image
-              src="/images/clinic-hero.png"
-              alt={
-                lang === "ja"
-                  ? "東京のモダンなクリニックの受付"
-                  : "Modern Tokyo clinic reception interior"
-              }
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
-          <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-border bg-card px-5 py-4 shadow-sm sm:block">
-            <p className="font-serif text-2xl font-bold text-primary">EN / 日本語</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              {lang === "ja" ? "1日目からバイリンガル" : "Bilingual from day one"}
+  const heroContent = {
+    eyebrow: lang === "ja" ? "東京のクリニックのためのバイリンガルWeb制作" : "Bilingual Web Design for Clinics in Tokyo",
+    title: lang === "ja" ? ["あなたのクリニックを", "英語でも日本語でも。"] : ["Your Clinic,", "In English and Japanese."],
+    description: lang === "ja" 
+      ? [
+          "東京の医療・ウェルネスクリニック向けに、洗練された信頼感",
+          "のあるWebサイトを制作します。英語・日本語のバイリンガル",
+          "対応サイトをご提供します。",
+        ]
+      : [
+          "We build sophisticated, trustworthy websites for medical and wellness",
+          "clinics in Tokyo. Providing fully bilingual sites tailored for both",
+          "local and international patients.",
+        ],
+    cta: lang === "ja" ? "お問い合わせ" : "Contact Us",
+  }
+
+  return (
+    <section id="top" className="relative min-h-[calc(100vh-96px)] max-h-[855px] w-full bg-white overflow-hidden flex items-center">
+      {/* 背景装飾 */}
+      <div className="absolute top-[387px] left-[70%] lg:left-[1340px] w-[420px] h-[428px] bg-[#047fb366] rounded-full blur-[40px] pointer-events-none" />
+      <div className="absolute top-32 left-[10%] lg:left-[250px] w-[222px] h-[226px] bg-[#047fb333] rounded-full blur-[20px] pointer-events-none" />
+
+      <div className="mx-auto max-w-[1440px] w-full px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+        
+        {/* 左カラム */}
+        <div className="flex flex-col items-start gap-6 max-w-xl">
+          {/* Label: 18px */}
+          <p className="text-[18px] font-bold bg-gradient-to-r from-[#03BAEE] to-[#014FB4] bg-clip-text text-transparent leading-snug [font-family:'Noto_Sans_JP-Bold',Helvetica]">
+            {heroContent.eyebrow}
+          </p>
+
+          {/* Headline (h1): 52px */}
+          <header className="w-full">
+            <h1 id="hero-title" className="text-[52px] font-semibold text-neutral-900 tracking-tight leading-[1.3] [font-family:'Noto_Serif_JP-SemiBold',Helvetica]">
+              {heroContent.title.map((line, idx) => (
+                <span key={idx} className="block">{line}</span>
+              ))}
+            </h1>
+          </header>
+
+          {/* Description (p): 18px */}
+          <div className="w-full">
+            <p className="text-[18px] font-normal text-neutral-700 leading-relaxed [font-family:'Noto_Sans_JP-Regular',Helvetica]">
+              {heroContent.description.map((line, idx) => (
+                <span key={idx} className="block">{line}</span>
+              ))}
             </p>
           </div>
+
+          <div className="mt-4">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 w-[251px] h-16 rounded-full bg-gradient-to-br from-[#03D9FE] to-[#003CAA] text-white text-xl font-bold tracking-wide transition-transform hover:scale-[1.02] shadow-lg shadow-[#003caa]/20 [font-family:'Noto_Sans_JP-Bold',Helvetica]"
+            >
+              <span>{heroContent.cta}</span>
+              <ArrowRight className="size-5" />
+            </a>
+          </div>
         </div>
+
+        {/* 右カラム */}
+        <div className="flex justify-center md:justify-end w-full">
+          <div className="w-full max-w-[488px] aspect-[487/495] bg-neutral-100 rounded-2xl overflow-hidden shadow-xl">
+            <img
+              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+              alt="Clinic Reception"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
       </div>
     </section>
   )

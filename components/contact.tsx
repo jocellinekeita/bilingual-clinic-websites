@@ -1,93 +1,52 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
-import { content, useLang } from "@/lib/i18n"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import { useLang } from "@/lib/i18n"
 
-const RECIPIENTS = ["jocelline.keita@gmail.com", "runa.wahahahaha@gmail.com"]
-
-export function Contact() {
+export default function Contact() {
   const { lang } = useLang()
-  const { contact } = content
-  const [sent, setSent] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const form = e.currentTarget
-    const data = new FormData(form)
-    const name = String(data.get("name") || "")
-    const clinic = String(data.get("clinic") || "")
-    const email = String(data.get("email") || "")
-    const message = String(data.get("message") || "")
-
-    const subject = `[ケアデジタル] Consultation request — ${name || "New inquiry"}`
-    const body = [
-      `Name / お名前: ${name}`,
-      `Clinic / クリニック名: ${clinic}`,
-      `Email / メール: ${email}`,
-      "",
-      `Message / ご相談内容:`,
-      message,
-    ].join("\n")
-
-    const mailto = `mailto:${RECIPIENTS.join(",")}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
-
-    setSent(true)
-    window.location.href = mailto
-    window.setTimeout(() => setSent(false), 4000)
+    setSubmitted(true)
   }
 
   return (
-    <section id="contact" className="border-t border-border bg-secondary/40">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-28">
-        <div>
-          <h2 className="text-balance font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            {contact.title[lang]}
+    <section id="contact" className="w-full bg-white py-24 border-t border-neutral-100">
+      <div className="mx-auto max-w-[1440px] px-12 max-w-3xl">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-neutral-900 [font-family:'Noto_Serif_JP-Bold',Helvetica]">
+            {lang === "ja" ? "お問い合わせ" : "Contact Us"}
           </h2>
-          <p className="mt-5 max-w-md text-pretty leading-relaxed text-muted-foreground">
-            {contact.sub[lang]}
+          <p className="text-neutral-500 mt-2 text-lg">
+            {lang === "ja" ? "ご相談・お見積もりは無料です。お気軽にご連絡ください。" : "Free consultation and estimate. Feel free to reach out."}
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-2xl border border-border bg-card p-6 sm:p-8"
-        >
-          <div className="grid gap-5">
-            <div className="grid gap-2">
-              <Label htmlFor="name">{contact.name[lang]}</Label>
-              <Input id="name" name="name" required autoComplete="name" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="clinic">{contact.clinic[lang]}</Label>
-              <Input id="clinic" name="clinic" autoComplete="organization" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">{contact.email[lang]}</Label>
-              <Input id="email" name="email" type="email" required autoComplete="email" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="message">{contact.message[lang]}</Label>
-              <Textarea id="message" name="message" rows={4} required />
-            </div>
-            <Button
-              type="submit"
-              variant="gradient"
-              className="mt-1"
-              disabled={sent}
-              style={{
-                background: 'linear-gradient(135deg, #03D9FE, #003CAA)'
-              }}
-            >
-              {sent ? contact.sending[lang] : contact.submit[lang]}
-            </Button>
+        {submitted ? (
+          <div className="bg-blue-50 border border-blue-200 text-[#049DC4] p-6 rounded-xl text-center text-xl font-medium">
+            {lang === "ja" ? "送信が完了しました。ありがとうございます！" : "Thank you! Your message has been sent."}
           </div>
-        </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <label className="text-base font-medium text-neutral-800">{lang === "ja" ? "お名前" : "Name"}</label>
+              <input required type="text" className="w-full px-4 h-12 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#049DC4] text-neutral-900 bg-neutral-50" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-base font-medium text-neutral-800">{lang === "ja" ? "メールアドレス" : "Email"}</label>
+              <input required type="email" className="w-full px-4 h-12 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#049DC4] text-neutral-900 bg-neutral-50" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-base font-medium text-neutral-800">{lang === "ja" ? "お問い合わせ内容" : "Message"}</label>
+              <textarea required rows={5} className="w-full p-4 rounded-lg border border-neutral-200 focus:outline-none focus:border-[#049DC4] text-neutral-900 bg-neutral-50 resize-none" />
+            </div>
+            <button type="submit" className="w-full h-14 rounded-full bg-[#049DC4] text-white text-xl font-bold transition-opacity hover:opacity-90 mt-4">
+              {lang === "ja" ? "送信する" : "Send Message"}
+            </button>
+          </form>
+        )}
       </div>
     </section>
   )

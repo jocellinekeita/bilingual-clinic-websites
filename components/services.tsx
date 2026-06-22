@@ -9,13 +9,13 @@ export function Services() {
   const { lang } = useLang()
   const { services } = content
   return (
-    <section id="services" className="border-t border-border bg-secondary/40">
+    <section id="services" className="bg-[#EBF6FB]">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-        <div className="max-w-2xl">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
+        <div className="max-w-3xl">
+          <p className="text-sm font-medium tracking-[0.2em] text-[#0099cc]">
             {services.title[lang]}
           </p>
-          <h2 className="mt-3 text-pretty font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-3 text-pretty font-serif text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {services.intro[lang]}
           </h2>
         </div>
@@ -26,15 +26,16 @@ export function Services() {
             return (
               <div
                 key={i}
-                className="flex flex-col rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-md"
+                className="flex flex-col rounded-2xl p-6"
+                style={{ background: "linear-gradient(145deg, #2EC0E8, #0057B8)" }}
               >
-                <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Icon className="size-5" />
+                <span className="inline-flex size-10 items-center justify-center rounded-xl bg-white/20">
+                  <Icon className="size-5 text-white" />
                 </span>
-                <h3 className="mt-5 font-serif text-lg font-semibold text-foreground">
+                <h3 className="mt-5 font-serif text-base font-semibold text-white">
                   {item.title[lang]}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-white/80">
                   {item.body[lang]}
                 </p>
               </div>
