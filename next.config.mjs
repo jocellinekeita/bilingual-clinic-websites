@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: 'export', // 💡 静的HTMLとしてエクスポートする設定
   images: {
-    unoptimized: true,
+    unoptimized: true, // 💡 GitHub Pagesで画像を表示させるために必須
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
