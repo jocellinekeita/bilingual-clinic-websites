@@ -1,63 +1,105 @@
 "use client"
 
-import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { content, useLang } from "@/lib/i18n"
+import { ArrowRight } from "lucide-react"
 
-export function Hero() {
+export default function Hero() {
   const { lang } = useLang()
+  const { hero } = content
+
+  // お問い合わせ・無料相談のGoogleフォームURL
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSemWJQtSbIIB1MVeIHKJFF2cAp0UGWlBfg1iF1c_rrWHFgpGw/viewform?usp=publish-editor"
+
+  const headlineLines = lang === "ja" 
+    ? ["あなたのクリニックを", "英語でも日本語でも。"] 
+    : ["Your clinic, online —", "in English and Japanese."]
+
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:pb-28 lg:pt-24">
-        <div className="flex flex-col items-start">
-          <span className="inline-flex items-center rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-medium tracking-wide text-secondary-foreground">
-            {content.hero.tagline[lang]}
-          </span>
-          <h1 className="mt-6 text-balance font-serif text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {content.hero.headline[lang]}
+    <section
+      id="top"
+      className="relative min-h-[calc(100vh-96px)] md:max-h-[780px] w-full bg-white overflow-hidden flex items-center"
+    >
+      {/* 下からふわっと浮かび上がる極上のイージングアニメーション定義 */}
+      <style jsx global>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-up {
+          opacity: 0;
+          animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-1 { animation-delay: 100ms; }
+        .delay-2 { animation-delay: 250ms; }
+        .delay-3 { animation-delay: 400ms; }
+        .delay-4 { animation-delay: 550ms; }
+      `}</style>
+
+      {/* 背景の真円イラスト（位置はそのままキープ） */}
+      <div className="absolute top-[387px] left-[65%] w-[420px] h-[428px] bg-[#047fb3]/20 rounded-full pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-24 left-[15%] w-[222px] h-[226px] bg-[#047fb3]/10 rounded-full pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-[280px] right-[8%] w-[100px] h-[102px] bg-[#047fb3]/15 rounded-full pointer-events-none" aria-hidden="true" />
+
+      {/* 💡 コンテンツ幅を max-w-[1250px] に統一 */}
+      <div className="mx-auto max-w-[1250px] w-full px-12 pt-[116px] pb-12 md:py-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+        
+        {/* 左カラム：テキスト */}
+        <div className="flex flex-col items-start max-w-2xl">
+          {/* 見出しサイズバランス（30px / 42px）＆ 文字高180% */}
+          <h1
+            className="text-[30px] md:text-[42px] font-semibold text-neutral-900 tracking-tight leading-[1.6] font-[family-name:var(--font-noto-serif)] antialiased animate-fade-up delay-1"
+          >
+            {headlineLines.map((line, idx) => (
+              <span key={idx} className="block">
+                {line}
+              </span>
+            ))}
           </h1>
-          <p className="mt-6 max-w-lg text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {content.hero.sub[lang]}
+
+          {/* ラベル */}
+          <p className="text-[18px] font-bold bg-gradient-to-r from-[#03BAEE] to-[#014FB4] bg-clip-text text-transparent leading-snug font-[family-name:var(--font-noto-sans)] antialiased mt-6 animate-fade-up delay-2">
+            {hero.tagline[lang]}
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+
+          {/* 説明文 */}
+          <p className="text-[18px] font-normal text-neutral-600 leading-relaxed font-[family-name:var(--font-noto-sans)] antialiased mt-4 max-w-xl animate-fade-up delay-3">
+            {hero.sub[lang]}
+          </p>
+
+          {/* Googleフォームボタン */}
+          <div className="mt-11 animate-fade-up delay-4">
             <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+              href={googleFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 w-[251px] h-16 rounded-full bg-gradient-to-br from-[#03D9FE] to-[#003CAA] text-white text-xl font-bold tracking-wide transition-transform hover:scale-[1.02] shadow-lg shadow-[#003caa]/20 font-[family-name:var(--font-noto-sans)]"
             >
-              {content.hero.cta[lang]}
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              {content.nav.services[lang]}
+              <span>{hero.cta[lang]}</span>
+              <ArrowRight className="size-5" />
             </a>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-sm">
-            <Image
+        {/* 右カラム：画像 */}
+        <div className="flex justify-center md:justify-end w-full">
+          <div className="w-full max-w-[488px] aspect-[487/495] rounded-2xl overflow-hidden relative shadow-md animate-fade-up delay-3">
+            <img
               src="/images/clinic-hero.png"
-              alt={
-                lang === "ja"
-                  ? "東京のモダンなクリニックの受付"
-                  : "Modern Tokyo clinic reception interior"
-              }
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              alt="Clinic Hero Visual"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+              }}
             />
           </div>
-          <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-border bg-card px-5 py-4 shadow-sm sm:block">
-            <p className="font-serif text-2xl font-bold text-primary">EN / 日本語</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              {lang === "ja" ? "1日目からバイリンガル" : "Bilingual from day one"}
-            </p>
-          </div>
         </div>
+
       </div>
     </section>
   )

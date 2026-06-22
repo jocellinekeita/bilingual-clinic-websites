@@ -1,52 +1,49 @@
 "use client"
 
 import Image from "next/image"
-import { Check } from "lucide-react"
 import { content, useLang } from "@/lib/i18n"
 
 export function WhyBilingual() {
   const { lang } = useLang()
   const { why } = content
+
   return (
-    <section id="why" className="border-t border-border bg-accent text-accent-foreground">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-28">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-accent-foreground/15 shadow-sm">
-          <Image
-            src="/images/why-bilingual.png"
-            alt={
-              lang === "ja"
-                ? "東京のクリニックで国際的な患者を迎えるスタッフ"
-                : "Clinic staff welcoming international patients in Tokyo"
-            }
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
+    <section id="why-bilingual" className="w-full bg-[#EBF6FB] py-24 scroll-mt-[96px]">
+      <div className="mx-auto max-w-[1250px] px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        
+        {/* 左側：白枠と影（shadow）を除去 */}
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-[512px] aspect-[1.33] rounded-[18px] overflow-hidden relative">
+            <Image
+              src="/images/why-bilingual.png"
+              alt={
+                lang === "ja"
+                  ? "東京のクリニックで国際的な患者を迎えるスタッフ"
+                  : "Clinic staff welcoming international patients in Tokyo"
+              }
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </div>
         </div>
 
-        <div>
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-foreground/70">
+        {/* 右側：テキストブロック */}
+        <div className="flex flex-col items-start gap-6 max-w-xl">
+          <p className="text-[18px] font-bold bg-gradient-to-r from-[#03BAEE] to-[#014FB4] bg-clip-text text-transparent font-[family-name:var(--font-noto-sans)] antialiased">
             {why.title[lang]}
           </p>
-          <h2 className="mt-3 text-balance font-serif text-3xl font-bold leading-snug tracking-tight sm:text-4xl">
-            {lang === "ja"
-              ? "あなたが取りこぼしている患者さんがいます。"
-              : "A bilingual site isn't a luxury — it's patients you're turning away."}
+
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 leading-[1.4] font-[family-name:var(--font-noto-serif)] antialiased">
+            {why.subtitle[lang]}
           </h2>
-          <p className="mt-5 text-pretty leading-relaxed text-accent-foreground/80">
+
+          <p className="text-[18px] font-normal text-neutral-700 leading-relaxed font-[family-name:var(--font-noto-sans)] antialiased">
             {why.body[lang]}
           </p>
-          <ul className="mt-6 space-y-3">
-            {why.points.map((pt, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm">
-                <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-accent-foreground/15">
-                  <Check className="size-3.5" />
-                </span>
-                {pt[lang]}
-              </li>
-            ))}
-          </ul>
         </div>
+
       </div>
     </section>
   )

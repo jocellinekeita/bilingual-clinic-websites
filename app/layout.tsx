@@ -36,7 +36,8 @@ export default function RootLayout({
       lang="en"
       className={`${notoSans.variable} ${notoSerif.variable} bg-background`}
     >
-      <body className="font-sans antialiased">
+      {/* 💡 body に font-sans を当てつつ、CSS変数を正確に読み込ませます */}
+      <body className="font-sans antialiased text-neutral-900 bg-white">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -1,90 +1,44 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
 import { content, useLang } from "@/lib/i18n"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
 
-const RECIPIENTS = ["jocelline.keita@gmail.com", "runa.wahahahaha@gmail.com"]
-
-export function Contact() {
+export default function Contact() {
   const { lang } = useLang()
-  const { contact } = content
-  const [sent, setSent] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
-    const data = new FormData(form)
-    const name = String(data.get("name") || "")
-    const clinic = String(data.get("clinic") || "")
-    const email = String(data.get("email") || "")
-    const message = String(data.get("message") || "")
-
-    const subject = `[ケアデジタル] Consultation request — ${name || "New inquiry"}`
-    const body = [
-      `Name / お名前: ${name}`,
-      `Clinic / クリニック名: ${clinic}`,
-      `Email / メール: ${email}`,
-      "",
-      `Message / ご相談内容:`,
-      message,
-    ].join("\n")
-
-    const mailto = `mailto:${RECIPIENTS.join(",")}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`
-
-    setSent(true)
-    window.location.href = mailto
-    window.setTimeout(() => setSent(false), 4000)
-  }
-
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSemWJQtSbIIB1MVeIHKJFF2cAp0UGWlBfg1iF1c_rrWHFgpGw/viewform?usp=publish-editor"
+  
   return (
-    <section id="contact" className="border-t border-border bg-secondary/40">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-28">
-        <div>
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
-            {content.nav.contact[lang]}
-          </p>
-          <h2 className="mt-3 text-balance font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            {contact.title[lang]}
-          </h2>
-          <p className="mt-5 max-w-md text-pretty leading-relaxed text-muted-foreground">
-            {contact.sub[lang]}
-          </p>
+    <section 
+      id="contact" 
+      className="w-full bg-[#E6F5FD] py-24 scroll-mt-[96px] text-center flex flex-col items-center justify-center"
+    >
+      {/* 💡 コンテンツ幅を max-w-[1250px] に統一 */}
+      <div className="mx-auto max-w-[1250px] w-full px-12 flex flex-col items-center">
+        
+        {/* 大見出し：サイズ縮小調整版 */}
+        <h2 className="text-[28px] md:text-[34px] font-bold text-neutral-900 tracking-tight font-[family-name:var(--font-noto-serif)] antialiased leading-tight">
+          {lang === "ja" ? "お気軽にご相談ください" : "Feel free to reach out"}
+        </h2>
+        
+        {/* サブテキスト */}
+        <p className="text-[16px] sm:text-[18px] font-normal text-neutral-700 font-[family-name:var(--font-noto-sans)] antialiased mt-6 max-w-2xl leading-relaxed">
+          {lang === "ja" 
+            ? "30分の無料相談を実施しています。アイデア段階でもお気軽にご相談ください。" 
+            : "We offer a free 30-minute consultation. Feel free to contact us even at the idea stage."}
+        </p>
+
+        {/* 楕円グラデーションボタン（Googleフォーム別タブ遷移） */}
+        <div className="mt-10">
+          <a
+            href={googleFormUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center w-[256px] h-14 rounded-full bg-gradient-to-r from-[#49B3E4] via-[#2F73C0] to-[#1E4FA2] text-white text-lg font-bold tracking-wide transition-transform hover:scale-[1.02] shadow-md shadow-[#2f73c0]/10 font-[family-name:var(--font-noto-sans)]"
+          >
+            {lang === "ja" ? "無料相談" : "Free Consultation"}
+          </a>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-2xl border border-border bg-card p-6 sm:p-8"
-        >
-          <div className="grid gap-5">
-            <div className="grid gap-2">
-              <Label htmlFor="name">{contact.name[lang]}</Label>
-              <Input id="name" name="name" required autoComplete="name" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="clinic">{contact.clinic[lang]}</Label>
-              <Input id="clinic" name="clinic" autoComplete="organization" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">{contact.email[lang]}</Label>
-              <Input id="email" name="email" type="email" required autoComplete="email" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="message">{contact.message[lang]}</Label>
-              <Textarea id="message" name="message" rows={4} required />
-            </div>
-            <button
-              type="submit"
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              {sent ? contact.sending[lang] : contact.submit[lang]}
-            </button>
-          </div>
-        </form>
       </div>
     </section>
   )
