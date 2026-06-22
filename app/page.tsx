@@ -2,26 +2,32 @@
 
 import { SiteHeader } from "@/components/site-header"
 import Hero from "@/components/hero"
+import Services from "@/components/services"
+import { WhyBilingual } from "@/components/why-bilingual" // 💡 追加
 import About from "@/components/about"
 import Contact from "@/components/contact"
-// 💡 i18nファイルからLanguageProvider（または名前が少し違う場合は適宜インポート名を確認してください）を読み込みます
 import { LanguageProvider } from "@/lib/i18n" 
 
 export default function Home() {
   return (
-    // 💡 エラーの原因だった useLang を動かすための親要素で全体を囲みます
     <LanguageProvider>
-      <main className="min-h-screen w-full bg-white text-neutral-900">
+      <main className="min-h-screen w-full bg-white text-neutral-900 antialiased">
         {/* 1. ヘッダー */}
         <SiteHeader />
         
-        {/* 2. メインのヒーロービュー */}
+        {/* 2. ファーストビュー */}
         <Hero />
         
-        {/* 3. 私たちについて */}
+        {/* 3. サービス概要 */}
+        <Services />
+        
+        {/* 4. 私たちの想い (ご要望に基づきサービス概要の直下に配置) */}
+        <WhyBilingual />
+        
+        {/* 5. 私たちについて */}
         <About />
         
-        {/* 4. お問い合わせ */}
+        {/* 6. お問い合わせ */}
         <Contact />
       </main>
     </LanguageProvider>
