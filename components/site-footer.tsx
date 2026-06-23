@@ -28,16 +28,6 @@ export function SiteFooter() {
           © 2026 CareDigital
         </div>
 
-        {/* 右側：リンク */}
-        <div className="flex items-center gap-4 text-xs text-neutral-500">
-          <a href="#terms" className="hover:text-white transition-colors">
-            {lang === "ja" ? "利用規約" : "Terms of Service"}
-          </a>
-          <span>|</span>
-          <a href="#privacy" className="hover:text-white transition-colors">
-            {lang === "ja" ? "プライバシーポリシー" : "Privacy Policy"}
-          </a>
-        </div>
 
       </div>
     </footer>

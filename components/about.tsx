@@ -6,40 +6,32 @@ export default function About() {
   const { lang } = useLang()
   const { about } = content
 
+  // 💡 ご提示いただいた日本語と英語の紹介文データを定義
+  const aboutText = {
+    ja: "私たちは、DXプロジェクトマネジメントとUX/UIデザインの専門性を活かし、医療機関の多言語対応を支援しています。英語・日本語のバイリンガル環境で数多くのプロジェクトを推進してきた経験と、ユーザーリサーチからUIデザインまで一貫して手がけるデザイン力を組み合わせ、患者様と医療機関の双方にとって使いやすいサービスづくりを目指しています。",
+    en: "We bring together expertise in Digital Transformation (DX) project management and User Experience (UX) and User Interface(UI) design to support multilingual healthcare services. With experience leading projects in bilingual English–Japanese environments and a strong understanding of the challenges foreigners face when accessing healthcare in Japan, we design user-friendly digital experiences that benefit both patients and healthcare providers."
+  }
+
   return (
     <section id="about" className="w-full bg-white py-24 scroll-mt-[96px]">
-      {/* 💡 コンテンツ幅を max-w-[1250px] に統一 */}
+      {/* 💡 コンテンツ幅を他と共通の max-w-[1250px] に統一 */}
       <div className="mx-auto max-w-[1250px] px-12">
         
-        {/* セクションヘッダー */}
-        <div className="mb-12 flex flex-col items-start gap-3">
+        {/* セクションヘッダー：左端のラインを1250pxに吸着 */}
+        <div className="flex flex-col items-start gap-3">
           <p className="text-[18px] font-bold text-[#049DC4] font-[family-name:var(--font-noto-sans)] antialiased">
             {about.title[lang]}
           </p>
-          {/* 見出しフォントサイズ調整版 */}
           <h2 className="text-[26px] md:text-[34px] font-bold text-neutral-900 tracking-tight font-[family-name:var(--font-noto-serif)] antialiased leading-snug">
-            {lang === "ja" ? "東京を拠点とするバイリンガルチーム。" : about.location[lang]}
+            {lang === "ja" ? "東京を拠点とするバイリンガルチーム。" : "Tokyo-Based Bilingual Team."}
           </h2>
         </div>
 
-        {/* メンバーカード（2カラムが1250pxの幅いっぱいに美しく広がります） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {about.people.map((p, idx) => (
-            <div 
-              key={idx} 
-              className="bg-[#fbfbfc] p-10 rounded-[24px] border border-neutral-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex flex-col items-start gap-4"
-            >
-              <h3 className="text-[32px] font-bold text-neutral-900 font-[family-name:var(--font-noto-serif)] antialiased leading-none">
-                {p.name}
-              </h3>
-              <p className="text-sm font-bold text-neutral-900 font-[family-name:var(--font-noto-sans)] antialiased tracking-wide">
-                {p.role[lang]}
-              </p>
-              <p className="text-neutral-700 text-base leading-relaxed font-[family-name:var(--font-noto-sans)] antialiased mt-2">
-                {p.bio[lang]}
-              </p>
-            </div>
-          ))}
+        {/* 💡 【変更の核心】スクリーンショット通りのシンプルな紹介文レイアウト */}
+        <div className="mt-12 max-w-5xl">
+          <p className="text-neutral-700 text-base md:text-[17px] leading-[1.8] font-[family-name:var(--font-noto-sans)] antialiased">
+            {aboutText[lang]}
+          </p>
         </div>
 
       </div>
