@@ -1,6 +1,8 @@
 "use client"
 
 import { useLang } from "@/lib/i18n"
+import Image from "next/image"
+
 
 export function SiteFooter() {
   const { lang } = useLang()
@@ -12,14 +14,13 @@ export function SiteFooter() {
         {/* 左側：指定のダークロゴマーク（💡 1.5倍の大型サイズに拡張） */}
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center h-16">
-            <img 
-              src="/images/logo_caredigital_dark.png" 
-              alt="CAREDIGITAL" 
-              className="h-[54px] w-auto object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
+            <Image
+  src="/images/logo_caredigital_dark.png"
+  alt="CAREDIGITAL"
+  width={200}
+  height={54}
+  className="object-contain"
+/>
           </div>
         </div>
 
