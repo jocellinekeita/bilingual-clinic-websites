@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
 2:I[47257,["/bilingual-clinic-websites/_next/static/chunks/0ya5kixflpvgt.js","/bilingual-clinic-websites/_next/static/chunks/0d3tkj33oycf2.js"],"ClientPageRoot"]
-3:I[31713,["/bilingual-clinic-websites/_next/static/chunks/0ya5kixflpvgt.js","/bilingual-clinic-websites/_next/static/chunks/0d3tkj33oycf2.js","/bilingual-clinic-websites/_next/static/chunks/0lwhsugg7dop6.js"],"default"]
+3:I[31713,["/bilingual-clinic-websites/_next/static/chunks/0ya5kixflpvgt.js","/bilingual-clinic-websites/_next/static/chunks/0d3tkj33oycf2.js","/bilingual-clinic-websites/_next/static/chunks/02yno99j6_v48.js"],"default"]
 6:I[97367,["/bilingual-clinic-websites/_next/static/chunks/0ya5kixflpvgt.js","/bilingual-clinic-websites/_next/static/chunks/0d3tkj33oycf2.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/bilingual-clinic-websites/_next/static/chunks/0lwhsugg7dop6.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"r2AyjLSOsos0GgNagcLTz"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/bilingual-clinic-websites/_next/static/chunks/02yno99j6_v48.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"tN8-M2WfzzflA8z7GlbbG"}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
