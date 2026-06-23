@@ -12,7 +12,7 @@ export default function Hero() {
 
   const headlineLines = lang === "ja" 
     ? ["あなたのクリニックを", "英語でも日本語でも。"] 
-    : ["Your clinic, online —", "in English and Japanese."]
+    : ["Your clinic,", "in English and Japanese."]
 
   return (
     <section

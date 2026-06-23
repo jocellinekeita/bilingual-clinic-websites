@@ -17,15 +17,21 @@ export default function Contact() {
         
         {/* 大見出し：サイズ縮小調整版 */}
         <h2 className="text-[28px] md:text-[34px] font-bold text-neutral-900 tracking-tight font-[family-name:var(--font-noto-serif)] antialiased leading-tight">
-          {lang === "ja" ? "お気軽にご相談ください" : "Feel free to reach out"}
+          {lang === "ja" ? "お気軽にご相談ください" : "Get in Touch"}
         </h2>
         
         {/* サブテキスト */}
-        <p className="text-[16px] sm:text-[18px] font-normal text-neutral-700 font-[family-name:var(--font-noto-sans)] antialiased mt-6 max-w-2xl leading-relaxed">
-          {lang === "ja" 
-            ? "30分の無料相談を実施しています。アイデア段階でもお気軽にご相談ください。" 
-            : "We offer a free 30-minute consultation. Feel free to contact us even at the idea stage."}
-        </p>
+        <div className="text-[16px] sm:text-[18px] font-normal text-neutral-700 font-[family-name:var(--font-noto-sans)] antialiased mt-6 max-w-2xl leading-relaxed">
+          {lang === "ja" ? (
+            <p>30分の無料相談を実施しています。アイデア段階でもお気軽にご相談ください。</p>
+          ) : (
+            /* 💡 英語の時は配列から1行ずつ取り出して、block要素として改行させます */
+            <p className="flex flex-col gap-1">
+              <span className="block">We offer a free 30-minute consultation.</span>
+              <span className="block">Feel free to contact us even at the idea stage.</span>
+            </p>
+          )}
+        </div>
 
         {/* 楕円グラデーションボタン（Googleフォーム別タブ遷移） */}
         <div className="mt-10">

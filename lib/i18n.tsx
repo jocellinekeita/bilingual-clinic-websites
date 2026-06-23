@@ -26,11 +26,11 @@ export const content = {
       ja: "東京のクリニックのためのバイリンガルWeb制作",
     },
     headline: {
-      en: "Your clinic, online — in English and Japanese.",
+      en: "Your clinic,in English and Japanese.",
       ja: "あなたのクリニックを、英語でも日本語でも。",
     },
     sub: {
-      en: "We build clean, professional websites for medical and wellness clinics in Tokyo. Bilingual from day one.",
+      en: "We build clean, professional websites for medical and wellness clinics in Tokyo.",
       ja: "東京の医療・ウェルネスクリニック向けに、洗練された信頼感のあるWebサイトを制作します。英語・日本語のバイリンガル対応サイトをご提供します。",
     },
     cta: { en: "Get in touch", ja: "お問い合わせ" },
@@ -39,7 +39,7 @@ export const content = {
   services: {
     title: { en: "Service Overview", ja: "サービス概要" },
     intro: {
-      en: "We help Tokyo clinics show up online — with websites that work for both Japanese and international patients.",
+      en: "We help Tokyo clinics show up online, with websites that work for both Japanese and international patients.",
       ja: "東京のクリニックが、日本人患者様にも外国人患者様にも見つけてもらいやすいオンライン環境づくりをサポートします。",
     },
     items: [
@@ -105,7 +105,7 @@ export const content = {
   why: {
     title: { en: "Our Vision", ja: "私たちの想い" },
     body: {
-      en: "Tokyo has one of the largest international communities in Japan — and most clinic websites are Japanese-only. As a result, foreign residents and international visitors cannot find you, cannot understand your services, and end up choosing other medical institutions. We solve that opportunity loss.",
+      en: "Tokyo has one of the largest international communities in Japan, and most clinic websites are Japanese-only. As a result, foreign residents and international visitors cannot find you and understand your services. Thus they end up choosing other medical institutions. We can help you solve this issue.",
       ja: "東京には日本最大級の国際コミュニティがあります。しかし、多くのクリニックのWebサイトは日本語のみです。その結果、外国人居住者や訪日外国人は、クリニックを見つけられない、提供サービスを理解できない、予約方法がわからないといった理由で、別の医療機関を選んでしまいます。私たちは、その機会損失を解決します。",
     },
     subtitle: { en: "More people can access your information.", ja: "より多くの方に情報を届けるために。" },
