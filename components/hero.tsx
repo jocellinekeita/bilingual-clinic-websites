@@ -2,6 +2,7 @@
 
 import { content, useLang } from "@/lib/i18n"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function Hero() {
   const { lang } = useLang()
@@ -89,14 +90,13 @@ export default function Hero() {
         {/* 右カラム：画像 */}
         <div className="flex justify-center md:justify-end w-full">
           <div className="w-full max-w-[488px] aspect-[487/495] rounded-2xl overflow-hidden relative shadow-md animate-fade-up delay-3">
-            <img
-              src="/images/clinic-hero.png"
-              alt="Clinic Hero Visual"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
-              }}
-            />
+            <Image
+  src="/images/clinic-hero.png"
+  alt="Clinic Hero Visual"
+  fill
+  className="object-cover"
+  sizes="(max-width: 768px) 100vw, 50vw"
+/>
           </div>
         </div>
 

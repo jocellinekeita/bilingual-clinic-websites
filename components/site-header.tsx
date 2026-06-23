@@ -5,6 +5,8 @@ import { Menu, X } from "lucide-react"
 import { content, useLang } from "@/lib/i18n"
 import { LanguageToggle } from "@/components/language-toggle"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
+
 
 export function SiteHeader() {
   const { lang } = useLang()
@@ -68,12 +70,13 @@ export function SiteHeader() {
           {/* 高さは h-14 (56px) のまま、横の余白を px-5 → px-2.5 に極小化して白の面積を大幅カット */}
           <div className="bg-white px-2.5 rounded-[8px] flex items-center justify-center h-14 shadow-sm">
             {/* ボックスの高さ(56px)に対して、ロゴ画像を h-12 (48px) まで引き上げ、上下余白をわずか4pxに */}
-            <img
-              src="/images/logo_caredigital_large.png"
-              alt={content.brand}
-              className="h-12 w-auto object-contain"
-              onError={(e) => { e.currentTarget.style.display = 'none' }}
-            />
+            <Image
+  src="/images/logo_caredigital_large.png"
+  alt={content.brand}
+  width={200}
+  height={48}
+  className="object-contain"
+/>
           </div>
         </a>
 
