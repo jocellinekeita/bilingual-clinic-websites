@@ -21,7 +21,7 @@ export function SiteHeader() {
     { href: "#why-bilingual", label: content.nav.why[lang] },
   ]
 
-  // 緩やかで美しいスクロールを実行する特製関数（メニュー用）
+  // 自然なアニメーション
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setOpen(false)
@@ -29,32 +29,7 @@ export function SiteHeader() {
     const target = document.querySelector(href)
     if (!target) return
 
-    const headerOffset = 96
-    const elementPosition = target.getBoundingClientRect().top
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-    const startPosition = window.pageYOffset
-    const distance = offsetPosition - startPosition
-    const duration = 1200
-    let start: number | null = null
-
-    const easeInOutCubic = (t: number) => {
-      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
-    }
-
-    const animation = (currentTime: number) => {
-      if (start === null) start = currentTime
-      const timeElapsed = currentTime - start
-      const run = easeInOutCubic(Math.min(timeElapsed / duration, 1))
-      
-      window.scrollTo(0, startPosition + distance * run)
-      
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation)
-      }
-    }
-
-    requestAnimationFrame(animation)
+    target.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -70,12 +45,13 @@ export function SiteHeader() {
           {/* 高さは h-14 (56px) のまま、横の余白を px-5 → px-2.5 に極小化して白の面積を大幅カット */}
           <div className="bg-white px-2.5 rounded-[8px] flex items-center justify-center h-14 shadow-sm">
             {/* ボックスの高さ(56px)に対して、ロゴ画像を h-12 (48px) まで引き上げ、上下余白をわずか4pxに */}
-            <Image
-  src="/images/logo_caredigital_large.png"
+            
+<Image
+  src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo_caredigital_large.png`}
   alt={content.brand}
   width={200}
   height={48}
-  className="object-contain"
+  className="h-12 w-auto object-contain"
 />
           </div>
         </a>

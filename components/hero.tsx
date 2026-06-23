@@ -91,7 +91,7 @@ export default function Hero() {
         <div className="flex justify-center md:justify-end w-full">
           <div className="w-full max-w-[488px] aspect-[487/495] rounded-2xl overflow-hidden relative shadow-md animate-fade-up delay-3">
             <Image
-  src="/images/clinic-hero.png"
+  src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/clinic-hero.png`}
   alt="Clinic Hero Visual"
   fill
   className="object-cover"

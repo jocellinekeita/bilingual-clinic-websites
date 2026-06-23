@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/bilingual-clinic-websites',  // ← あなたのリポジトリ名に変更
+  basePath: process.env.NODE_ENV === 'production' ? '/bilingual-clinic-websites' : '',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: process.env.NODE_ENV === 'production' ? '/bilingual-clinic-websites' : '',
+  },
   images: {
     unoptimized: true,
   },
 }
 
-export default nextConfig  // ← module.exports ではなく export default
+export default nextConfig
