@@ -17,7 +17,7 @@ export const content = {
   nav: {
     services: { en: "Services", ja: "サービス" },
     about: { en: "About", ja: "私たちについて" },
-    why: { en: "Why Bilingual", ja: "私たちの想い" },
+    why: { en: "Our Vision", ja: "私たちの想い" },
     contact: { en: "Contact", ja: "お問い合わせ" },
   },
   hero: {
