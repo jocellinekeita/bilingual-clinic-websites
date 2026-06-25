@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center h-16">
             <Image
-  src="/images/logo_caredigital_dark.png"
+           src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/logo_caredigital_dark.png`}
   alt="CAREDIGITAL"
   width={200}
   height={54}
