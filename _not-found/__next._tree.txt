@@ -1,4 +1,4 @@
 :HL["/bilingual-clinic-websites/_next/static/chunks/0nyd~v_xtp5dm.css","style"]
 :HL["/bilingual-clinic-websites/_next/static/chunks/01da9p.xrps~y.css","style"]
-:HL["/bilingual-clinic-websites/_next/static/chunks/0~ntso-k1w2ra.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"t9TZFzpjN0VaLP9uy6y8z"}
+:HL["/bilingual-clinic-websites/_next/static/chunks/159g0g7q1s_oc.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"T26bQmfYOc23Yt6qvbS61"}
