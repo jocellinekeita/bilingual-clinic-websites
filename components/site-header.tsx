@@ -17,8 +17,8 @@ export function SiteHeader() {
 
   const links = [
     { href: "#services", label: content.nav.services[lang] },
-    { href: "#about", label: content.nav.about[lang] },
     { href: "#why-bilingual", label: content.nav.why[lang] },
+    { href: "#about", label: content.nav.about[lang] },
   ]
 
   // 自然なアニメーション
